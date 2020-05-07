@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="container-fluid">
+        <div class="bg-prive_office"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="pr_of-container ml-auto mr-auto">
+            <div class="row">
+                <div class="col d-flex align-items-center">
+                        <div class="private_office-img-container">
+                            <i class="fa fa-user icon"></i>
+                        </div>
+                </div>
+                <div class="col" style="margin-top: 2%">
+                    {{ form_start(userForm) }}
+
+                    <div class="form-group">
+                        <label for="inputUsername" class="private-label">Имя пользователя</label>
+                        <input type="text" class="form-control form-control-private_office"
+                               placeholder="Имя пользователя" value="{{ app.user.username }}" readonly>
+                    </div>
+
+                    {{ form_row(userForm.email, {label_attr: {class: 'private-label'} }) }}
+
+                    {{ form_row(userForm.full_name, {label_attr: {class: 'private-label'} })}}
+
+                    {{ form_row(userForm.phone, {label_attr: {class: 'private-label'} }) }}
+
+                    <div style="text-align: center">
+                        <button type="submit" class="btn btn-login" style="width: 140px;margin-top: 10px">Редактировать</button>
+                    </div>
+                    {{ form_end(userForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

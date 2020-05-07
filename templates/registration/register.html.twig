@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Регистация{% endblock %}
+
+{% block main %}
+    <div class="container form-auth">
+        <div class="card mr-auto ml-auto">
+            {{ form_start(registrationForm, {'attr':{'class':'px-4 py-3'}}) }}
+
+                <div class="login-logo-container">
+                    <i class="fa fa-user icon"></i>
+                </div>
+
+                <h3 class="login-h3">Регистрация</h3>
+
+                {{ form_row(registrationForm.username) }}
+
+                {{ form_row(registrationForm.email) }}
+
+
+                {{ form_row(registrationForm.plainPassword.first) }}
+
+                {{ form_row(registrationForm.plainPassword.second) }}
+
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                <div style="text-align: center">
+                    <button type="submit" class="btn btn-login" style="width: 125px;margin-top: 10px">Регистрация</button>
+                </div>
+
+            {{ form_end(registrationForm) }}
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/login">Авторизация.</a>
+        </div>
+    </div>
+{% endblock %}

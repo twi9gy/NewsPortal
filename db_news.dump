@@ -1,0 +1,147 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: migration_versions; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE migration_versions (
+    version character varying(14) NOT NULL,
+    executed_at timestamp(0) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.migration_versions OWNER TO postgres;
+
+--
+-- Name: COLUMN migration_versions.executed_at; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN migration_versions.executed_at IS '(DC2Type:datetime_immutable)';
+
+
+--
+-- Name: user; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "user" (
+    id integer NOT NULL,
+    username character varying(180) NOT NULL,
+    roles json NOT NULL,
+    password character varying(255) NOT NULL,
+    email character varying(255) DEFAULT NULL::character varying,
+    full_name character varying(255) DEFAULT NULL::character varying,
+    phone character varying(20) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public."user" OWNER TO postgres;
+
+--
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_id_seq OWNER TO postgres;
+
+--
+-- Data for Name: migration_versions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY migration_versions (version, executed_at) FROM stdin;
+20200430075605	2020-04-30 07:56:37
+20200430084004	2020-04-30 08:40:35
+\.
+
+
+--
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "user" (id, username, roles, password, email, full_name, phone) FROM stdin;
+5	User_1	["ROLE_USER"]	$argon2id$v=19$m=65536,t=4,p=1$vDAQKkwo7SdCE7C8gU6liA$FwysGCZAaBezLSKjmrqrOKXagDUoWfCVOelKNIZxKdg	Email_User_1@mail.ru	\N	\N
+6	User_2	["ROLE_USER"]	$argon2id$v=19$m=65536,t=4,p=1$GAAcJQXG++P9o5vQQlkyHA$EDCyvMvz/tJ5vFknOs2fbRf/ivVBQ7Mwrw5hXvgl+8c	\N	\N	\N
+7	User_3	["ROLE_USER"]	$argon2id$v=19$m=65536,t=4,p=1$Vs2+fUNuo/bCSLlQYMbT3A$9qz5zg+4yG6ntPbwvOklZ4USN8F2Q5AfOVwFL0HH/uE	\N	\N	\N
+4	User_0	["ROLE_ADMIN"]	$argon2id$v=19$m=65536,t=4,p=1$ThyjcWZOEFDmrbov5rHtlw$8cecgODjoMVjtVDybGpmdw5CTHP4O/avrj83IaaqUMY	Email_User_0@mail.ru	1234234	235
+9	twiggy	["ROLE_USER"]	$argon2id$v=19$m=65536,t=4,p=1$Ey0HF/iRNUBj4aP3+vaxBw$rSyEwnG46aiWsLDmMVcKvqAlczvPCOSV2mKC0NyiBeU	twi9gy@mail.ru	Самойлов Вадим Дмитриевич	+79081312123
+\.
+
+
+--
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('user_id_seq', 10, true);
+
+
+--
+-- Name: migration_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY migration_versions
+    ADD CONSTRAINT migration_versions_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "user"
+    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: uniq_8d93d649f85e0677; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX uniq_8d93d649f85e0677 ON "user" USING btree (username);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

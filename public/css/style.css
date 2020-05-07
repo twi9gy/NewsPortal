@@ -1,0 +1,343 @@
+html, body {
+    height: 100%;
+}
+.content {
+    flex: 1 0 auto;
+}
+
+#page-content{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/img/bg-main.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+a{
+    color: white;
+    font-size: 14px;
+}
+
+a:hover, a:active {
+    color: #007bff;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+.wrapper {
+    width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header style start */
+
+nav{
+    background-color: #243238;
+}
+
+.navbar{
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar-toggler-icon{
+    background-image: url("/img/navbar-toggler.png");
+}
+
+.navbar-brand{
+    color: #007bff;
+}
+
+/* Header style end */
+
+/* Login style start */
+
+.form-auth{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.card{
+    width: 40%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    background: -webkit-linear-gradient(top,#7579ff,#b224ef);
+}
+
+.login-logo-container{
+    font-size: 60px;
+    background: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.icon{
+    padding: 11px;
+    color: #243238;
+    min-width: 50px;
+    text-align: center;
+}
+
+.login-h3{
+    width: 100%;
+    color:#fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label{
+    color: white;
+    margin-bottom: 10px;
+}
+
+.btn-login{
+    width: 100px;
+    border-radius: 25px;
+}
+
+.header-p{
+    display: block;
+    padding: .5rem 1rem;
+    font-size: 14px;
+    color: white;
+}
+
+#registration_form_agreeTerms {
+    position: absolute;
+    margin-top: 8px;
+    margin-left: -18px;
+}
+
+.form-check-input{
+    margin-top: 7px;
+}
+/* Login style end */
+
+/* About style start */
+
+.about-a{
+    color: blue;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.about-a:hover{
+    text-decoration: none;
+}
+
+.about-hl{
+    height:5px;
+    width:18vw;
+    border-top:2px solid black;
+    padding-left:10px;
+}
+/* About style end */
+
+/* Private_Office style start */
+
+.bg-prive_office{
+    width: 100vw;
+    height: 60vh;
+    background-image: url("/img/bg-private_office.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.pr_of-container{
+    margin-top: -40vh;
+    margin-bottom: 54vh;
+    width: 50vw;
+    height: 440px;
+    background-color: #50BBE7;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.private-label{
+    color: black;
+}
+
+.private_office-img-container{
+    font-size: 175px;
+    background: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.form-group{
+    width: 95%;
+}
+
+/* Private_Office style end */
+
+/* Footer style start */
+
+.footer-content{
+    height: 125px;
+    width: 100%;
+    background: #243238;
+}
+
+.footer-text{
+    color: #f8f9fa;
+}
+
+.footer-copyright{
+    height: 50px;
+    width: 100%;
+    background: #1c2331;
+}
+
+.btn{
+    border-color: white;
+    border-width: 3px;
+    background: #007bff;
+    display: inline-block;
+    width: 100px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    color: white;
+}
+
+.btn:hover{
+    background: #28a745;
+    text-decoration: none;
+    color: white;
+}
+
+/* Footer style end */
+
+/* Media style start */
+
+@media (max-width: 1200px) {
+    /* Header style start */
+
+    a, a.header-p{
+        font-size: 10px;
+    }
+
+    /* Header style end */
+
+    /* PrivateOffice style start */
+
+    .pr_of-container{
+        width: 60vw;
+    }
+
+    /* PrivateOffice style end */
+}
+
+@media (max-width: 991px) {
+    /* Header style start */
+
+    a, a.header-p{
+        font-size: 14px;
+    }
+
+    a.header-p{
+        padding-left: 0;
+    }
+
+    #auth-ul{
+        margin-left: 0;
+        align-items: start;
+    }
+
+    /* Header style end */
+
+    /* Login style start */
+
+    .card{
+        width: 55%;
+    }
+
+    /* Login style end */
+
+    /* PrivateOffice style start */
+
+    .pr_of-container{
+        width: 70vw;
+    }
+
+    /* PrivateOffice style end */
+}
+
+@media (max-width: 850px) {
+    /* PrivateOffice style start */
+
+    .pr_of-container{
+        width: 80vw;
+    }
+
+    /* PrivateOffice style end */
+}
+
+@media (max-width: 500px) {
+    /* Login style start */
+
+    .pr_of-container{
+        height: 680px;
+    }
+
+    .private_office-img-container{
+        margin-top: 5%;
+    }
+
+    .form-group-private_office{
+        width: 90%;
+        margin-left: 2.5%;
+    }
+
+    .private-label, .form-control-private_office{
+        width: 95%;
+        margin-left: 5%;
+    }
+
+    /* Login style end */
+}
+
+@media (max-width: 450px) {
+    /* Login style start */
+
+    .card{
+        width: 95%;
+    }
+
+    /* Login style end */
+}
+
+@media (max-width: 400px) {
+    /* Footer style start */
+
+    .footer-text{
+        font-size: 16px;
+    }
+
+    /* Footer style end */
+}
+
+/* Media style end */
