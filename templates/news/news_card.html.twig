@@ -1,0 +1,48 @@
+<div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12 d-flex mart-15 pl-0 pr-0" >
+    <div class="card-news pl-0" style="height: 300px">
+        <div class="block_genre">
+            <p>{{ news.class }}</p>
+        </div>
+        <div class="fill" style="background-image:url('{{ asset('uploads/news/') ~ news.SrcImg }}');"></div>
+    </div>
+</div>
+<div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 mart-15 pl-0 pr-0 news_fields">
+    <div class="news_bg" style="text-align: center;color: white;">
+        <div class="row align-items-start">
+            <div class="col-12" style="margin-top: 5%">
+                <div class="crop-height">
+                    <h5 style="color: #dc3545">{{ news.title }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-start">
+            <div class="col">
+                <div class="crop-height">
+                    <p>{{ news.annotation }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="news_info" style="position:unset;">
+                    {% set vars = {'date': news.DateAdded,
+                        'countViews': news.CountViews, 'author': news.author} %}
+                    {% include '/news/news_data.html.twig' with vars %}
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-end">
+            <div class="col">
+                <ul id="btn-list" class="d-flex justify-content-center w-100 flex-wrap">
+                    <li><a type="submit" class="btn btn-danger btn_more"
+                           href="{{ path('news_show', {'id': news.id}) }}">Подробнее</a></li>
+                    {% if app.user != null and (is_granted('ROLE_ADMIN') or news.author == app.user.username) %}
+                        <li><a type="submit" class="btn btn-danger btn_more"
+                               href="{{ path('news_edit', {'id': news.id}) }}">Изменить</a></li>
+                        <li>{% include '/news/_delete_form.html.twig' %}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,7 +4,7 @@
 
 {% block main %}
     <div class="container form-auth">
-        <div class="card mr-auto ml-auto">
+        <div class="col-xl-6 col-lg-6 col-md-7 col-sm-12 col-12 card ml-auto mr-auto form-auth card ml-auto mr-auto">
             {{ form_start(registrationForm, {'attr':{'class':'px-4 py-3'}}) }}
 
                 <div class="login-logo-container">
@@ -25,7 +25,7 @@
                 {{ form_row(registrationForm.agreeTerms) }}
 
                 <div style="text-align: center">
-                    <button type="submit" class="btn btn-login" style="width: 125px;margin-top: 10px">Регистрация</button>
+                    <button type="submit" class="btn btn-login btn btn_main" style="width: 140px;margin-top: 10px">Регистрация</button>
                 </div>
 
             {{ form_end(registrationForm) }}

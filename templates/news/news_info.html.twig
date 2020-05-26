@@ -1,0 +1,10 @@
+<div class="block_genre">
+    <p>{{ news.class }}</p>
+</div>
+<div class="fill" style="background-image:url('{{ asset('uploads/news/') ~ news.SrcImg }}');">
+    <div class="news-info_fields">
+        {% if content == "true" %}
+            {% include 'news/news_card-content.html.twig' %}
+        {% endif %}
+    </div>
+</div>

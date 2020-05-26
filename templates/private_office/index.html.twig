@@ -3,40 +3,42 @@
 {% block title %}Личный кабинет{% endblock %}
 
 {% block main %}
-<div class="row">
-    <div class="container-fluid">
-        <div class="bg-prive_office"></div>
-    </div>
-    <div class="container-fluid">
-        <div class="pr_of-container ml-auto mr-auto">
+    <div class="container-fluid" id="wrapper_privateOffice">
+        <div class="container-fluid container-privateOff">
+            <div class="bg-prive_office"></div>
+        </div>
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10 col-12 pr_of-container ml-auto mr-auto">
             <div class="row">
-                <div class="col d-flex align-items-center">
-                        <div class="private_office-img-container">
-                            <i class="fa fa-user icon"></i>
-                        </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center" style="margin-top: 5%">
+                    <div class="private_office-img-container">
+                        <i class="fa fa-user icon"></i>
+                    </div>
                 </div>
-                <div class="col" style="margin-top: 2%">
-                    {{ form_start(userForm) }}
-
-                    <div class="form-group">
-                        <label for="inputUsername" class="private-label">Имя пользователя</label>
-                        <input type="text" class="form-control form-control-private_office"
-                               placeholder="Имя пользователя" value="{{ app.user.username }}" readonly>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" style="margin-bottom: 5%">
+                    {% include '/private_office/_form.html.twig' %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>Новости</h3>
                     </div>
-
-                    {{ form_row(userForm.email, {label_attr: {class: 'private-label'} }) }}
-
-                    {{ form_row(userForm.full_name, {label_attr: {class: 'private-label'} })}}
-
-                    {{ form_row(userForm.phone, {label_attr: {class: 'private-label'} }) }}
-
-                    <div style="text-align: center">
-                        <button type="submit" class="btn btn-login" style="width: 140px;margin-top: 10px">Редактировать</button>
-                    </div>
-                    {{ form_end(userForm) }}
+                </div>
+                <hr>
+                <div class="container">
+                    {% for news in news %}
+                        <div class="row" >
+                            {% include '/news/news_card.html.twig' %}
+                        </div>
+                    {% else %}
+                        <div class="col-12">
+                            <h5>Записи не найдены</h5>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

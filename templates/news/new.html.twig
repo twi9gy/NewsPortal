@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Создание новости{% endblock %}
+
+{% block main %}
+    <div class="container" style="margin-bottom: 5%">
+        {% set vars = {'method': 'Создать' } %}
+        {% include '/news/_form.html.twig' with vars %}
+    </div>
+{% endblock %}

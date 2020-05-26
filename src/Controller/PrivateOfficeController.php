@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\News;
 use App\Entity\User;
 use App\Form\UserFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,9 +28,15 @@ class PrivateOfficeController extends AbstractController
         ]);
         $form->handleRequest($request);
 
+        $user = $this->getUser();
+        $news = $this->getDoctrine()
+            ->getRepository(News::class)
+            ->findBy(['author' => $user->getUsername()]);
+
         return $this->render('private_office/index.html.twig', [
             'userForm' => $form->createView(),
             'controller_name' => 'PrivateOfficeController',
+            'news' => $news,
         ]);
     }
 

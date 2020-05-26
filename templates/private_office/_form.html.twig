@@ -1,0 +1,18 @@
+{{ form_start(userForm) }}
+
+    <div class="form-group">
+        <label for="inputUsername" class="private-label">Имя пользователя</label>
+        <input type="text" class="form-control form-control-private_office"
+               placeholder="Имя пользователя" value="{{ app.user.username }}" readonly>
+    </div>
+
+    {{ form_row(userForm.email, {label_attr: {class: 'private-label'} }) }}
+
+    {{ form_row(userForm.full_name, {label_attr: {class: 'private-label'} })}}
+
+    {{ form_row(userForm.phone, {label_attr: {class: 'private-label'} }) }}
+
+    <div style="text-align: center">
+        <button type="submit" class="btn btn-login btn_main" style="width: 140px;margin-top: 10px">Редактировать</button>
+    </div>
+{{ form_end(userForm) }}

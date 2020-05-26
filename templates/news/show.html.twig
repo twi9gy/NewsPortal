@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новость{% endblock %}
+
+{% block main %}
+    <div class="container" >
+
+        <div class="row">
+            <div class="col-12" >
+                <h3>Новость</h3>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 main_news">
+                <div id="news-title_wrap" class="row align-items-start ml-3 mr-1" style="background-color: #243238;">
+                    <div class="col news-title">
+                        <h5>{{ news.title }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-7 col-lg-7 col-md-9 col-sm-12 col-12 d-flex mart-15 ml-auto mr-auto">
+                <div class="card-news pl-0" style="height: 400px">
+                    <div class="block_genre">
+                        <p>{{ news.class }}</p>
+                    </div>
+                    <div class="fill d-flex" style="background-image:url('{{ asset('uploads/news/') ~ news.SrcImg }}');">
+                        <div class="news_info_sm align-text-bottom" style="font-size: 1.2em">
+                            {% include '/news/news_data.html.twig' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mart-15" style="background-color: #243238;">
+                    <div class="row align-items-start">
+                        <div class="col" style="text-align: center;color: white;margin: 15px 0 15px 0">
+                            <h5>{{ news.text }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mart-15">
+                <h3>Комментарии</h3>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 mart-15" style="padding-right: 0">
+                {% set vars = { 'comments': comments } %}
+                {% include '/comment/index.html.twig' with vars %}
+                {% if app.user != null %}
+                    {% if comments|length == 0 %}
+                        <p>Записи не найдены</p>
+                    {% endif %}
+                    <h5>Оставить комментарий</h5>
+                    <hr class="mr-3">
+                    <div class="container pl-0">
+                        {{ include('comment/_form.html.twig') }}
+                    </div>
+                {% else %}
+                    {% if comments|length == 0 %}
+                        <p>Записи не найдены</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
