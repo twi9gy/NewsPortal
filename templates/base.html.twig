@@ -5,72 +5,102 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Новостной портал{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="/css/reset.css">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-                  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-                  crossorigin="anonymous">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
             <link rel="stylesheet" type="text/css" href="/css/style.css">
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
     <body class="d-flex flex-column">
         {% block body %}
             <header>
-                <nav class="navbar navbar-expand-lg">
-                    <div class="container">
-                        <a class="navbar-brand" style="font-size: 18px"
-                           href="/"><i class="fa fa-home" aria-hidden="true"></i> ГЛАВНАЯ</a>
+                <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                    <a class="navbar-brand" href="/">Новостной портал</a>
+                    <button
+                            class="navbar-toggler"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#navbarCollapse"
+                            aria-controls="navbarCollapse"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width: 50vw">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item active"><a class="nav-item nav-link active"
-                                       href="#"><i class="fa fa-globe" aria-hidden="true"></i> МИР</a></li>
-                                <li class="nav-item"><a class="nav-item nav-link active"
-                                    href="#"><i class="fa fa-bicycle" aria-hidden="true"></i> СПОРТ</a></li>
-                                <li class="nav-item"><a class="nav-item nav-link active"
-                                    href="#"><i class="fa fa-briefcase" aria-hidden="true"></i> ПОЛИТИКА</a></li>
-                                <li class="nav-item"><a class="nav-item nav-link active"
-                                    href="#"><i class="fa fa-heart" aria-hidden="true"></i> ЗДОРОВЬЕ</a><li>
-                                <li class="nav-item"><a class="nav-item nav-link active"
-                                    href="#"><i class="fa fa-flask" aria-hidden="true"></i> НАУКА</a><li>
-                                <li class="nav-item"><a class="nav-item nav-link active"
-                                    href="#"><i class="fa fa-money" aria-hidden="true"></i> БИЗНЕС</a><li>
-                                <li class="nav-item"><a class="nav-item nav-link active"
-                                    href="#"><i class="fa fa-music" aria-hidden="true"></i> МУЗЫКА</a><li>
-                            </ul>
-                            <ul id="auth-ul" class="navbar-nav">
-                                {% if app.user != null %}
-                                    <li class="nav-item"><a class="header-p"
-                                        style="color: white">Привет, {{ app.user.username }}</a></li>
-                                    <li class="nav-item"><a class="nav-item nav-link active"
-                                        href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Выход</a></li>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav mr-auto sidenav" id="navAccordion">
+                            <a class="navbar-brand" href="/"><i class="fa fa-home" aria-hidden="true"></i> ГЛАВНАЯ</a>
+                            <li class="nav-item active h-auto">
+                                <a class="nav-link active"href="{{ path('news_index', { 'class' : 'world'}) }}">
+                                    <i class="fa fa-globe" aria-hidden="true"></i> МИР</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('news_index', { 'class' : 'sport'}) }}">
+                                    <i class="fa fa-bicycle" aria-hidden="true"></i> СПОРТ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('news_index', { 'class' : 'policy'}) }}">
+                                    <i class="fa fa-briefcase" aria-hidden="true"></i> ПОЛИТИКА</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('news_index', { 'class' : 'health'}) }}">
+                                    <i class="fa fa-heart" aria-hidden="true"></i> ЗДОРОВЬЕ</a>
+                            <li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('news_index', { 'class' : 'science'}) }}">
+                                    <i class="fa fa-flask" aria-hidden="true"></i> НАУКА</a>
+                            <li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('news_index', { 'class' : 'business'}) }}">
+                                    <i class="fa fa-money" aria-hidden="true"></i> БИЗНЕС</a>
+                            <li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('news_index', { 'class' : 'music'}) }}">
+                                    <i class="fa fa-music" aria-hidden="true"></i> МУЗЫКА</a>
+                            <li>
+                        </ul>
+                        <ul class="navbar-nav w-100 justify-content-end">
+                            {% if app.user != null %}
+                                <li class="nav-item">
+                                    <a class="header-p" style="color: white">Привет, {{ app.user.username }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/logout">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i> Выход</a>
+                                </li>
+                                {% if is_granted('ROLE_ADMIN') %}
                                     <li class="nav-item">
-                                        <a class="nav-item nav-link active" href="/private_office">
-                                            <i class="fa fa-list-ul" aria-hidden="true"></i> Личный кабинет</a>
+                                        <a class="nav-link active" href="/admin">
+                                            <i class="fa fa-list-ul" aria-hidden="true"></i> Admin</a>
                                     </li>
-                                {% else %}
-                                    <li class="nav-item"><a class="nav-item nav-link active"
-                                        href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Вход</a></li>
-                                    <li class="nav-item"><a class="nav-item nav-link active"
-                                        href="/register"><i class="fa fa-user-plus"
-                                                            aria-hidden="true"></i> Регистрация</a></li>
+                                    {% else %}
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="/private_office">
+                                                <i class="fa fa-list-ul" aria-hidden="true"></i> Личный кабинет</a>
+                                        </li>
                                 {% endif %}
-                            </ul>
-                        </div>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{{ path('news_new') }}">
+                                        <i class="fa fa-newspaper-o" aria-hidden="true"></i> Создание новости</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item"><a class="nav-item nav-link active"
+                                                        href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Вход</a></li>
+                                <li class="nav-item"><a class="nav-item nav-link active"
+                                                        href="/register"><i class="fa fa-user-plus"
+                                                                            aria-hidden="true"></i> Регистрация</a></li>
+                            {% endif %}
+                        </ul>
                     </div>
                 </nav>
             </header>
+
             <main class="content">
                 <div id="page-content"></div>
                 {% block main %}
                 {% endblock %}
             </main>
+
             <footer>
                 <div class="footer-content d-flex align-items-center">
                     <ul class="text-center py-2 ml-auto mr-auto">
@@ -78,13 +108,13 @@
                             <h5 class="footer-text">Узнайте больше о проекте</h5>
                         </li>
                         <li class="list-inline-item">
-                            <a href="/about" class="footer-text btn">About</a>
+                            <a href="/about" class="footer-text btn btn_main">About</a>
                         </li>
                     </ul>
                 </div>
                 <div class="footer-copyright">
                     <!-- Copyright -->
-                    <div class="text-center py-3"  style="color: #f8f9fa;">© 2020 Copyright:
+                    <div id="footer_content" class="text-center py-3"  style="color: #f8f9fa;">© 2020 Copyright:
                         <a href="https://twi9gy.github.io/"> Samoylov</a>
                     </div>
                     <!-- Copyright -->
@@ -95,6 +125,14 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         {% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    bsCustomFileInput.init()
+                })
+            </script>
+        {% endblock %}
     </body>
 </html>

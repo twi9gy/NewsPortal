@@ -1,0 +1,35 @@
+{% for comment in comments %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-comment mr-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3 pl-0" style="overflow: hidden">
+                            <div class="fill img_comment" style="background-image:url('/img/user.jpg')">
+
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col-6" style="padding-left: 0">
+                                    <p style="padding-top: 10px">@{{ comment.author }}</p>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <p style="padding-right: 10px; padding-top: 10px">{{ comment.DateAdded|date('Y-m-d H:i') }}</p>
+                                </div>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <div class="col-1 d-flex">
+                                        {% include '/comment/_delete_form.html.twig' %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="row">
+                                <p>{{ comment.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

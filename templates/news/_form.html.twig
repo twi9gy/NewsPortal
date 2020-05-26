@@ -1,0 +1,12 @@
+<div style="width: 105%">
+    {{ form_start(form) }}
+        {{ form_row(form.title, {label_attr: {class: 'private-label'}} ) }}
+        {{ form_row(form.date_added, {label_attr: {class: 'private-label'}} ) }}
+        {{ form_row(form.annotation, {label_attr: {class: 'private-label'}} ) }}
+        {{ form_row(form.text, {label_attr: {class: 'private-label'}} ) }}
+        {{ form_row(form.src_img, {label_attr: {class: 'private-label'}} ) }}
+        {{ form_row(form.count_views, {label_attr: {class: 'private-label'}} ) }}
+        {{ form_row(form.class, {label_attr: {class: 'private-label'}} ) }}
+        <button class="btn btn-primary" >{{ method }}</button>
+    {{ form_end(form) }}
+</div>

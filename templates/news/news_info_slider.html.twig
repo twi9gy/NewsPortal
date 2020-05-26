@@ -1,0 +1,16 @@
+<div class="block_genre">
+    <p>{{ news.class }}</p>
+</div>
+<div class="fill" style="background-image:url('{{ asset('uploads/news/') ~ news.SrcImg }}');"></div>
+<div class="carousel-caption d-none d-md-block">
+    <div class="crop-height">
+        <a href="{{ path('news_show', { 'id' : news.id}) }}">
+            <h5 class="title_slider">{{ news.title }}</h5></a>
+    </div>
+    <div class="crop-height">
+        <p>{{ news.annotation }}</p>
+    </div>
+    <div class="news_info" style="top: 0">
+        {% include '/news/news_data.html.twig' %}
+    </div>
+</div>

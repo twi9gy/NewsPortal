@@ -1,0 +1,33 @@
+easy_admin:
+    entities:
+        Comment:
+            class: App\Entity\Comment
+            label: 'Комментарии'
+            list:
+                title: "%%entity_label%%"
+                fields:
+                    - { property: 'id' }
+                    - { property: 'id_news' }
+                    - { property: 'author' }
+                    - { property: 'text' }
+                    - { property: 'date_added' }
+        News:
+            class: App\Entity\News
+            label: 'Новости'
+            list:
+                title: "%%entity_label%%"
+                fields:
+                    - { property: 'id' }
+                    - { property: 'title' }
+                    - { property: 'date_added' }
+                    - { property: 'annotation' }
+                    - { property: 'text' }
+                    - { property: 'count_views' }
+                    - { property: 'author' }
+                    - { property: 'class' }
+                    - { property: 'src_img', type: 'image', base_path: '/img/img_news/' }
+        User:
+            class: App\Entity\User
+            label: 'Пользователи'
+            list:
+                title: "%%entity_label%%"

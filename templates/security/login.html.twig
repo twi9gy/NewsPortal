@@ -3,8 +3,8 @@
 {% block title %}Вход{% endblock %}
 
 {% block main %}
-    <div class="container form-auth">
-        <div id="container-formLogin" class="card mr-auto ml-auto">
+    <div class="container">
+        <div class="col-xl-6 col-lg-6 col-md-7 col-sm-12 col-12 card ml-auto mr-auto form-auth">
             <form method="post" class="px-4 py-3">
 
                 <div class="login-logo-container">
@@ -43,7 +43,7 @@
                        value="{{ csrf_token('authenticate') }}"
                 >
                 <div style="text-align: center">
-                    <button type="submit" class="btn btn-login">Войти</button>
+                    <button type="submit" class="btn btn-login btn btn_main">Войти</button>
                 </div>
             </form>
             <div class="dropdown-divider"></div>

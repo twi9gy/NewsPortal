@@ -1,0 +1,10 @@
+<div class="crop-height">
+    <a href="{{ path('news_show', { 'id' : news.id}) }}">
+        <h5 class="title_slider">{{ news.title }}</h5></a>
+</div>
+<div class="crop-height">
+    <p style="color: white">{{ news.annotation }}</p>
+</div>
+<div class="news_info_sm">
+    {% include '/news/news_data.html.twig' %}
+</div>
